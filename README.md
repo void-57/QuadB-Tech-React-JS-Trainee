@@ -12,6 +12,11 @@ A feature-rich task management application built with React, Redux, and Material
 ✅ Local storage persistence  
 ✅ Modern UI with Material-UI components  
 
+## Demo Credentials
+
+Username: `demo`  
+Password: `password123`
+
 ## Screenshots
 
 | Login Screen | Task List | Mobile View |
@@ -113,10 +118,7 @@ src/
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
-## Demo Credentials
 
-Username: `demo`  
-Password: `password123`
 
 ## License
 
