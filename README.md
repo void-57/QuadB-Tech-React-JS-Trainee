@@ -38,8 +38,8 @@ A feature-rich task management application built with React, Redux, and Material
 ### Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/react-todo-app.git
-cd react-todo-app
+git clone https://github.com/void-57/QuadB-Tech-React-JS-Trainee.git
+cd QuadB-Tech-React-JS-Trainee
 ```
 
 2. Install dependencies:
@@ -71,14 +71,39 @@ npm run build
 
 ```
 src/
+├── components/
+│   │   ├── PrioritySelector.jsx
+│   │   ├── TaskInput.jsx
+│   │   ├── TaskItem.jsx
+│   │   ├── TaskList.jsx
+│   │   ├── WeatherInfo.jsx
+│   │   ├── Auth/               # Authentication UI components
+│   │        ├── PrivateRoute.jsx
+│   │
 ├── features/
-│   ├── auth/          # Authentication logic
-│   └── tasks/         # Task management logic
-├── components/        # Reusable UI components
-├── pages/             # Page components
-├── services/          # API services
-├── styles/            # Global styles
-└── utils/             # Utility functions
+│   ├── auth/                   # Redux slice for authentication
+│   │   ├── authSlice.js
+│   ├── tasks/                  # Redux slice for tasks
+│   │   ├── tasksSlice.js
+│
+├── pages/                      # Application pages
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   ├── NotFound.jsx
+│
+├── services/                   # Helper functions
+│   ├── localStorage.js
+│   ├── weather.js
+│
+├── styles/                     # Styling files
+│   ├── main.css
+│   ├── TaskInput.css
+│   ├── TaskList.css
+│
+├── App.jsx                      # Root React component
+├── main.js                      # Entry point
+├── store.js                     # Redux store
+
 ```
 
 ## Available Scripts
