@@ -2,6 +2,12 @@
 
 A feature-rich task management application built with React, Redux, and Material-UI that integrates with weather APIs.
 
+## 🚀 Live Demo
+
+Check out the live version of the app here:  
+👉 **[React To-Do App](https://quad-b-tech-react-js-trainee.vercel.app/)**  
+
+
 ## Features
 
 ✅ Task management (Create, Read Delete)  
