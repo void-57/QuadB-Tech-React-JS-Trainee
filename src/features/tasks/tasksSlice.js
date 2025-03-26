@@ -4,8 +4,7 @@ import { saveTasksToLocalStorage } from '../../services/localStorage';
 
 const initialState = {
   tasks: [],
-  loading: false,
-  error: null,
+  priorities: ['High', 'Medium', 'Low']
 };
 
 const tasksSlice = createSlice({
@@ -16,6 +15,13 @@ const tasksSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
+    updateTaskPriority(state, action){
+        const { id, priority } = action.payload;
+        const task = state.tasks.find(task => task.id === id);
+        if (task) {
+          task.priority = priority;
+        }
+      },
     addTaskSuccess(state, action) {
       state.tasks.push(action.payload);
       state.loading = false;
@@ -35,13 +41,13 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { addTaskStart, addTaskSuccess, addTaskFailure, deleteTask, setTasks } = tasksSlice.actions;
+export const { addTaskStart, addTaskSuccess, addTaskFailure, deleteTask, setTasks,updateTaskPriority} = tasksSlice.actions;
 
 export const addTask = (taskData) => async (dispatch) => {
   try {
     dispatch(addTaskStart());
     
-    // Add weather data if task contains location info
+    // Added weather data if task contains location info
     let weather = null;
     if (taskData.location) {
       try {

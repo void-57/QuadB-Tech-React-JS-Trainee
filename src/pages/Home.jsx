@@ -1,35 +1,66 @@
-import { Container, Typography, Button, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../features/auth/authSlice';
-import TaskInput from '../components/TaskInput';
+import { logout, selectCurrentUser } from '../features/auth/authSlice';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Avatar,
+  Container,
+  Box,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
+import { Logout } from '@mui/icons-material';
 import TaskList from '../components/TaskList';
+import TaskInput from '../components/TaskInput';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user);
+  const user = useSelector(selectCurrentUser);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleLogout = () => {
     dispatch(logout());
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 4 }}>
-        <Typography variant="h4" component="h1">
-          My Tasks
-        </Typography>
-        <Box>
-          <Typography variant="subtitle1" component="span" sx={{ mr: 2 }}>
-            Welcome, {user?.username}
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant={isMobile ? 'h6' : 'h5'} component="div" sx={{ flexGrow: 1 }}>
+            Task Manager
           </Typography>
-          <Button variant="outlined" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Box>
-      </Box>
-      <TaskInput />
-      <TaskList />
-    </Container>
+          
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography variant="body1" sx={{ display: { xs: 'none', sm: 'block' } }}>
+              {user?.username}
+            </Typography>
+            <IconButton color="inherit" onClick={handleLogout}>
+              <Logout />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      <Container 
+        maxWidth="lg" 
+        sx={{ 
+          py: isMobile ? 2 : 4,
+          flex: 1 
+        }}
+      >
+        <Typography 
+          variant={isMobile ? 'h5' : 'h4'} 
+          gutterBottom
+        >
+          Welcome, {user?.username}!
+        </Typography>
+        <TaskInput />
+        <TaskList />
+      </Container>
+    </Box>
   );
 };
 

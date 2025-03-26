@@ -13,7 +13,7 @@ import "../styles/TaskInput.css";
 
 const TaskInput = () => {
   const [text, setText] = useState("");
-  const [priority, setPriority] = useState("medium");
+  const [priority, setPriority] = useState("Medium");
   const [location, setLocation] = useState("");
   const dispatch = useDispatch();
 
@@ -51,9 +51,9 @@ const TaskInput = () => {
           label="Priority"
           onChange={(e) => setPriority(e.target.value)}
         >
-          <MenuItem value="low">Low</MenuItem>
-          <MenuItem value="medium">Medium</MenuItem>
-          <MenuItem value="high">High</MenuItem>
+          <MenuItem value="High">High</MenuItem>
+          <MenuItem value="Medium">Medium</MenuItem>
+          <MenuItem value="Low">Low</MenuItem>
         </Select>
       </FormControl>
       <Button

@@ -14,6 +14,11 @@ import { Alert, CircularProgress, List } from "@mui/material";
 
 const TaskList = () => {
   const tasks = useSelector(selectTasks);
+   // sorting logic 
+   const sortedTasks = [...tasks].sort((a, b) => {
+    const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+    return priorityOrder[a.priority] - priorityOrder[b.priority];
+  });
   const loading = useSelector(selectTasksLoading);
   const error = useSelector(selectTasksError);
   const dispatch = useDispatch();
@@ -33,7 +38,7 @@ const TaskList = () => {
       {tasks.length === 0 ? (
         <Alert severity="info">No tasks yet. Add one above!</Alert>
       ) : (
-        tasks.map((task) => <TaskItem key={task.id} task={task} />)
+        sortedTasks.map((task) => <TaskItem key={task.id} task={task} />)
       )}
     </List>
   );
